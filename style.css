@@ -54,6 +54,7 @@ body {
 
 .hero-content {
   max-width: 500px;
+  margin-left: 60px; /* Add this line to move content right */
 }
 
 .hero-content h2 {
