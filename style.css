@@ -144,3 +144,73 @@ body {
     text-align: center;
   }
 }
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1em 1em;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+    margin-top: 1em;
+  }
+  .logo {
+    font-size: 1.2rem;
+    margin-bottom: 0.5em;
+  }
+  .top-intro {
+    font-size: 1rem;
+    padding: 1em 0.5em;
+  }
+  .hero {
+    flex-direction: column;
+    padding: 1em 1em;
+    min-height: unset;
+    gap: 1.5em;
+    background-size: cover;
+    background-position: center;
+  }
+  .hero-content {
+    margin-left: 0;
+    margin-top: 0;
+    max-width: 100%;
+    text-align: center;
+  }
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .hero-content h2 {
+    font-size: 1.2rem;
+  }
+  .hero-image {
+    width: 100%;
+    height: auto;
+    margin: 1em 0 0 0;
+    max-width: 320px;
+    align-self: center;
+  }
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+  }
+  .simple-button,
+  .contact-links a {
+    width: 100%;
+    margin: 0.5em 0 0 0;
+    font-size: 1rem;
+    padding: 0.8em 0;
+    box-sizing: border-box;
+  }
+  .projects-list {
+    padding: 1em;
+    margin: 1em 0.5em;
+  }
+  .project-item img {
+    max-width: 100%;
+    height: auto;
+  }
+}
