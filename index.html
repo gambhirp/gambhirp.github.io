@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Prachi Gambhir | Business Analytics Portfolio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css" />
     <style>
       body {
         margin: 0;
@@ -58,25 +60,113 @@
         font-size: 1.08rem;
         margin-bottom: 0.5em;
       }
+      /* Navbar styles */
+      .navbar {
+        width: 100%;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #3730a3;
+        color: white;
+      }
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+      }
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      .nav-links a:hover {
+        color: #c7d2fe;
+      }
+      /* Hero section styles */
+      .hero {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4rem 2rem;
+        background-color: #f8fafc;
+      }
+      .hero-content {
+        max-width: 50%;
+      }
+      .hero-content h2 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        color: #3730a3;
+      }
+      .hero-content h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #3730a3;
+      }
+      .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        color: #334155;
+      }
+      .contact-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+      .contact-links a {
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        background-color: #6366f1;
+        color: white;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+      .contact-links a:hover {
+        background-color: #3730a3;
+      }
+      .hero-image {
+        max-width: 40%;
+      }
+      .hero-image img {
+        width: 100%;
+        border-radius: 16px;
+        box-shadow: 0 4px 24px rgba(55,48,163,0.09);
+      }
     </style>
   </head>
   <body>
-    <div class="container">
-      <h1>Prachi Gambhir</h1>
-      <div class="subtitle">
-        🎓 MSc Business Analytics | Trinity College Dublin<br>
-        📍 Based in Dublin, Ireland
+    <nav class="navbar">
+      <div class="logo">PRACHI</div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Education</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Hello, I'm Prachi</h2>
+        <h1>I'm <span id="typed-text"></span></h1>
+        <p>
+          MSc Business Analytics | Trinity College Dublin<br>
+          Based in Dublin, Ireland
+        </p>
+        <div class="contact-links">
+          <a href="mailto:prachi.gambhir03@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
+        </div>
       </div>
-      <div class="contact">
-        📩 prachi.gambhir03@gmail.com &nbsp;|&nbsp;
-        <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
+      <div class="hero-image">
+        <img src="profile.jpg" alt="Prachi Gambhir" />
       </div>
-      <hr>
-      <div class="intro">
-        Welcome to my Business Analytics portfolio!<br><br>
-        This space features academic and personal projects that demonstrate my skills in data analysis, visualization, and business insight generation.<br><br>
-        Feel free to explore my work and reach out if you'd like to connect or collaborate!
-      </div>
-    </div>
+    </section>
+    <script src="script.js"></script>
   </body>
 </html>
