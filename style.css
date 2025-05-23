@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
   background: #f4f8fc;
   color: #22223b;
 }
@@ -12,7 +12,7 @@ body {
   align-items: center;
   padding: 1.2em 4vw;
   background: #e9f1fa;
-  box-shadow: 0 2px 8px rgba(55,48,163,0.04);
+  box-shadow: 0 2px 8px rgba(55, 48, 163, 0.04);
 }
 
 .logo {
@@ -49,9 +49,11 @@ body {
   min-height: 80vh;
   padding: 2em 4vw;
   gap: 3em;
-  background: 
-    linear-gradient(rgba(244, 248, 252, 0.95), rgba(244, 248, 252, 0.95)),
-    url('prachi.jpg') right center/contain no-repeat;
+  background: linear-gradient(
+      rgba(244, 248, 252, 0.95),
+      rgba(244, 248, 252, 0.95)
+    ),
+    url("prachi.jpg") right center/contain no-repeat;
   position: relative; /* Add this if not already present */
 }
 
@@ -107,23 +109,23 @@ body {
   height: 320px;
   object-fit: cover;
   border-radius: 50%;
-  box-shadow: 0 4px 32px rgba(55,48,163,0.10);
+  box-shadow: 0 4px 32px rgba(55, 48, 163, 0.1);
   background: #e0e7ef;
   margin-left: -40px; /* Adjust this value as needed */
 }
 
 .floating-text {
   position: absolute;
-  top: 3%;              /* Move to top */
+  top: 3%; /* Move to top */
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(255,255,255,0.85);
+  background: rgba(255, 255, 255, 0.85);
   color: #3730a3;
   padding: 1em 2em;
   border-radius: 12px;
   font-size: 1.3rem;
   font-weight: 500;
-  box-shadow: 0 2px 12px rgba(55,48,163,0.07);
+  box-shadow: 0 2px 12px rgba(55, 48, 163, 0.07);
   z-index: 2;
   pointer-events: none;
   text-align: center;
