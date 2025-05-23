@@ -17,10 +17,6 @@ let i = 0,
   wait = 1200;
 const typedText = document.getElementById("typed-text");
 
-// Set the intro before the typing effect
-typedText.previousSibling &&
-  (typedText.previousSibling.textContent = "Let's explore — I'm a: ");
-
 function type() {
   const role = roles[i % roles.length];
   if (!isDeleting) {

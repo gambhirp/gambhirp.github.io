@@ -114,23 +114,6 @@ body {
   margin-left: -40px; /* Adjust this value as needed */
 }
 
-.floating-text {
-  position: absolute;
-  top: 3%; /* Move to top */
-  left: 50%;
-  transform: translateX(-50%);
-  background: none; /* Remove background color */
-  color: #3730a3;
-  padding: 0; /* Remove extra padding */
-  border-radius: 0; /* Remove border radius */
-  font-size: 1.3rem;
-  font-weight: 500;
-  box-shadow: none; /* Remove box shadow */
-  z-index: 2;
-  pointer-events: none;
-  text-align: center;
-}
-
 @media (max-width: 900px) {
   .hero {
     flex-direction: column;
