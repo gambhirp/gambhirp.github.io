@@ -49,7 +49,9 @@ body {
   min-height: 80vh;
   padding: 2em 4vw;
   gap: 3em;
-  background: #f4f8fc;
+  background: 
+    linear-gradient(rgba(244, 248, 252, 0.95), rgba(244, 248, 252, 0.95)),
+    url('prachi.jpg') right center/contain no-repeat;
   position: relative; /* Add this if not already present */
 }
 
@@ -112,9 +114,9 @@ body {
 
 .floating-text {
   position: absolute;
-  top: 18%;
+  top: 3%;              /* Move to top */
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   background: rgba(255,255,255,0.85);
   color: #3730a3;
   padding: 1em 2em;
