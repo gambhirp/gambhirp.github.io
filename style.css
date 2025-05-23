@@ -50,8 +50,8 @@ body {
   padding: 2em 4vw;
   gap: 3em;
   background: linear-gradient(
-      rgba(244, 248, 252, 0.95),
-      rgba(244, 248, 252, 0.95)
+      rgba(244, 248, 252, 0.6),
+      /* Lower opacity for more image visibility */ rgba(244, 248, 252, 0.6)
     ),
     url("prachi.jpg") right center/contain no-repeat;
   position: relative; /* Add this if not already present */
@@ -74,12 +74,19 @@ body {
   font-weight: 700;
   margin: 0 0 0.5em 0;
   color: #22223b;
+  line-height: 1.2;
+  word-break: break-word; /* Ensures long words wrap */
 }
 
 #typed-text {
   color: #00bcd4;
   border-right: 2px solid #00bcd4;
   padding-right: 4px;
+  display: inline-block;
+  min-width: 320px; /* Ensures enough space for long roles */
+  max-width: 100%;
+  white-space: normal; /* Allows wrapping */
+  word-break: break-word;
 }
 
 .hero-content p {
