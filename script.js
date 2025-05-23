@@ -20,16 +20,16 @@ const typedText = document.getElementById("typed-text");
 function type() {
   const role = roles[i % roles.length];
   if (!isDeleting) {
-    current = role.substring(0, j + 1);
     j++;
-    if (j === role.length) {
+    current = role.substring(0, j);
+    if (j === role.length + 1) {
       isDeleting = true;
       setTimeout(type, wait);
       return;
     }
   } else {
-    current = role.substring(0, j - 1);
     j--;
+    current = role.substring(0, j);
     if (j === 0) {
       isDeleting = false;
       i++;

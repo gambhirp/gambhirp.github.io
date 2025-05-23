@@ -132,11 +132,6 @@
       .hero-image {
         max-width: 40%;
       }
-      .hero-image img {
-        width: 100%;
-        border-radius: 16px;
-        box-shadow: 0 4px 24px rgba(55, 48, 163, 0.09);
-      }
       .floating-text {
         position: absolute;
         bottom: 10%;
@@ -159,19 +154,22 @@
           transform: translateY(0);
         }
       }
+      .top-intro {
+        width: 100%;
+        padding: 1rem 2rem;
+        background-color: #3730a3;
+        color: white;
+        text-align: center;
+        font-size: 1.1rem;
+        position: relative;
+      }
     </style>
   </head>
   <body>
-    <nav class="navbar">
-      <div class="logo">PRACHI</div>
-      <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Education</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="top-intro">
+      Welcome to my portfolio — a space where I explore problems, patterns, and
+      possibilities through data.
+    </div>
     <section class="hero">
       <div class="hero-content">
         <h2>Hello, I'm Prachi</h2>
