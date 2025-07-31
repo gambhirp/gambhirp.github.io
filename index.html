@@ -1,33 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prachi Gambhir | Business Analytics Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="top-intro">
-      Welcome to my portfolio — a space where I explore problems, patterns, and possibilities through data.
-    </div>
-    <section class="hero">
-      <div class="hero-content">
-        <h2>Hello, I'm Prachi</h2>
-        <h1>
-          <span class="intro-text">Let's explore — I'm a:</span><br />
-          <span id="typed-text">Insight Seeker</span>
-        </h1>
-        <p>
-          MSc Business Analytics | Trinity College Dublin<br />
-          Based in Dublin, Ireland
-        </p>
-        <div class="button-container">
-          <a href="mailto:prachigambhir03@gmail.com" class="simple-button">Email</a>
-          <a href="https://www.linkedin.com/in/prachi-gambhir/" target="_blank" class="simple-button">LinkedIn</a>
-          <a href="projects.html" class="simple-button">Projects</a>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prachi Gambhir | Business Analytics Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="top-intro">
+    Welcome to my portfolio — a space where I explore problems, patterns, and possibilities through data.
+  </div>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Hello, I'm Prachi</h2>
+      <h1>
+        <span class="intro-text">Let's explore — I'm a:</span><br />
+        <span id="typed-text">Insight Seeker</span>
+      </h1>
+      <p>
+        MSc Business Analytics | Trinity College Dublin<br />
+        Based in Dublin, Ireland
+      </p>
+      <div class="button-container">
+        <a href="mailto:prachigambhir03@gmail.com" class="simple-button">Email</a>
+        <a href="https://www.linkedin.com/in/prachi-gambhir/" target="_blank" class="simple-button">LinkedIn</a>
+        <a href="projects.html" class="simple-button">Projects</a>
       </div>
-      <div class="hero-image"></div>
-    </section>
-  </body>
+    </div>
+    <div class="hero-image">
+      <img src="prachi.jpg" alt="Prachi Hero Image" />
+    </div>
+  </section>
+
+  <script>
+    // Example typewriter text (optional enhancement)
+    const typedText = document.getElementById("typed-text");
+    const roles = ["Insight Seeker", "Business Analyst", "Data Explorer"];
+    let index = 0, charIndex = 0, currentRole = roles[0];
+
+    function type() {
+      if (charIndex < currentRole.length) {
+        typedText.textContent += currentRole.charAt(charIndex);
+        charIndex++;
+        setTimeout(type, 100);
+      } else {
+        setTimeout(() => erase(), 1500);
+      }
+    }
+
+    function erase() {
+      if (charIndex > 0) {
+        typedText.textContent = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, 50);
+      } else {
+        index = (index + 1) % roles.length;
+        currentRole = roles[index];
+        setTimeout(type, 500);
+      }
+    }
+
+    type();
+  </script>
+</body>
 </html>
