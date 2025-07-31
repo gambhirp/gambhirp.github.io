@@ -1,89 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>My Projects</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
+      background-color: #f3f7fc;
       margin: 0;
-      padding: 2rem;
-      background-color: #f4f8fc;
+      padding: 40px;
+      text-align: center;
     }
 
     h1 {
-      text-align: center;
-      margin-bottom: 2rem;
-      color: #222;
+      margin-bottom: 40px;
     }
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      padding: 0 2rem;
-    }
-
-    .project-link {
-      text-decoration: none;
-      color: inherit;
-      display: block;
+    .project-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
     }
 
     .project-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: transform 0.3s ease;
-      cursor: pointer;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 350px;
       display: flex;
       flex-direction: column;
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
+      justify-content: space-between;
+      min-height: 620px;
+      transition: transform 0.2s ease;
     }
 
     .project-card img {
       width: 100%;
-      height: auto;
+      border-radius: 8px;
       object-fit: contain;
-      display: block;
-      background-color: #f9f9f9;
-      padding: 0;
-    }
-
-    .project-content {
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-title {
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: #3366cc;
-      margin-bottom: 0.4rem;
     }
 
     .project-description {
-      font-size: 0.9rem;
-      color: #555;
-      line-height: 1.4;
+      margin-top: 15px;
+      text-align: left;
     }
 
-    .back-home {
-      display: block;
-      text-align: center;
-      margin-top: 2rem;
-      color: #666;
-      font-size: 0.9rem;
+    .project-description h3 {
+      margin: 15px 0 5px;
+      color: #0056b3;
+      font-size: 16px;
+    }
+
+    .project-description p {
+      margin: 0;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .back-link {
+      margin-top: 50px;
+      display: inline-block;
+      color: #0077cc;
       text-decoration: none;
+      font-size: 14px;
     }
 
-    .back-home:hover {
+    .back-link:hover {
       text-decoration: underline;
     }
   </style>
@@ -92,50 +76,56 @@
 
   <h1>My Projects</h1>
 
-  <div class="projects-grid">
+  <div class="project-container">
 
-    <!-- Project 1 -->
-    <a href="https://github.com/gambhirp/ESG-Project.git" class="project-link" target="_blank">
-      <div class="project-card">
-        <img src="ESG_Visual.png" alt="Predicting ESG Scores from Financial Data">
-        <div class="project-content">
-          <div class="project-title">Predicting ESG Scores from Financial Data</div>
-          <div class="project-description">
-            Predict ESG scores of S&P 500 companies using financial metrics helping investors assess sustainability performance.
-          </div>
-        </div>
+    <!-- ESG Project -->
+    <div class="project-card">
+      <img src="ESG_Visual.png" alt="ESG Project">
+      <div class="project-description">
+        <h3>Predicting ESG Scores from Financial Data</h3>
+        <p>Predict ESG scores of S&P 500 companies using financial metrics helping investors assess sustainability performance.</p>
       </div>
-    </a>
+    </div>
 
-    <!-- Project 2 -->
-    <a href="https://github.com/gambhirp/Bank-Churn-Prediction.git" class="project-link" target="_blank">
-      <div class="project-card">
-        <img src="Bank_Churn.png" alt="Bank Churn Prediction & Retention Strategy">
-        <div class="project-content">
-          <div class="project-title">Bank Churn Prediction & Retention Strategy</div>
-          <div class="project-description">
-            Identifies high-risk banking customers using ML and customer data to drive real-time CRM retention strategies.
-          </div>
-        </div>
+    <!-- Zoetis Project -->
+    <div class="project-card">
+      <img src="Zoetis_UI.png" alt="Zoetis Project">
+      <div class="project-description">
+        <h3>AI-Powered CRM Automation for Zoetis</h3>
+        <p>Transforms sales voice notes into structured customer data using Whisper and NLP-based entity extraction.</p>
       </div>
-    </a>
+    </div>
 
-    <!-- Project 3 -->
-    <a href="https://github.com/gambhirp/Hotel-Review-Social-Media-Analysis.git" class="project-link" target="_blank">
-      <div class="project-card">
-        <img src="Hotel_Review.png" alt="Hotel Review Analysis & Sentiment Benchmarking">
-        <div class="project-content">
-          <div class="project-title">Hotel Review Analysis & Sentiment Benchmarking</div>
-          <div class="project-description">
-            NLP and sentiment analysis of 500k+ Booking.com reviews to extract insights and benchmark hotel performance.
-          </div>
-        </div>
+    <!-- Bank Churn Project -->
+    <div class="project-card">
+      <img src="Bank_Churn.png" alt="Bank Churn Project">
+      <div class="project-description">
+        <h3>Bank Churn Prediction & Retention Strategy</h3>
+        <p>Identifies high-risk banking customers using ML and customer data to drive real-time CRM retention strategies.</p>
       </div>
-    </a>
+    </div>
+
+    <!-- Hotel Review Project -->
+    <div class="project-card">
+      <img src="Hotel_Review.png" alt="Hotel Review Project">
+      <div class="project-description">
+        <h3>Hotel Review Analysis & Sentiment Benchmarking</h3>
+        <p>NLP and sentiment analysis of 500k+ Booking.com reviews to extract insights and benchmark hotel performance.</p>
+      </div>
+    </div>
+
+    <!-- Fyffes Project -->
+    <div class="project-card">
+      <img src="Fyffes_UI.png" alt="Fyffes Project">
+      <div class="project-description">
+        <h3>Pineapple Pest Control Optimization – Fyffes Case Study</h3>
+        <p>Built Power BI dashboards to detect pest-risk zones and recommend interventions using climate and yield data.</p>
+      </div>
+    </div>
 
   </div>
 
-  <a href="index.html" class="back-home">&larr; Back to Home</a>
+  <a href="index.html" class="back-link">← Back to Home</a>
 
 </body>
 </html>
