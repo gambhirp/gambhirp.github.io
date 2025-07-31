@@ -1,49 +1,41 @@
-const TxtType = function(el, toRotate, period) {
-  this.toRotate = toRotate;
-  this.el = el;
-  this.loopNum = 0;
-  this.period = parseInt(period, 10) || 2000;
-  this.txt = '';
-  this.tick();
-  this.isDeleting = false;
-};
+const roles = [
+  "Problem Solver",
+  "Data Enthusiast",
+  "Business Analyst",
+  "Insight Seeker",
+  "Storyteller with Data",
+  "Critical Thinker",
+  "Visual Communicator",
+  "Curious Learner",
+  "Growth-Minded Analyst",
+  "Strategic Thinker",
+];
+let i = 0,
+  j = 0,
+  current = "",
+  isDeleting = false,
+  wait = 1200;
+const typedText = document.getElementById("typed-text");
 
-TxtType.prototype.tick = function() {
-  const i = this.loopNum % this.toRotate.length;
-  const fullTxt = this.toRotate[i];
-
-  this.txt = this.isDeleting
-    ? fullTxt.substring(0, this.txt.length - 1)
-    : fullTxt.substring(0, this.txt.length + 1);
-
-  this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-
-  const that = this;
-  let delta = 200 - Math.random() * 100;
-
-  if (this.isDeleting) delta /= 2;
-
-  if (!this.isDeleting && this.txt === fullTxt) {
-    delta = this.period;
-    this.isDeleting = true;
-  } else if (this.isDeleting && this.txt === '') {
-    this.isDeleting = false;
-    this.loopNum++;
-    delta = 500;
-  }
-
-  setTimeout(function() {
-    that.tick();
-  }, delta);
-};
-
-window.onload = function() {
-  const elements = document.getElementsByClassName('typewrite');
-  for (let i=0; i<elements.length; i++) {
-    const toRotate = elements[i].getAttribute('data-type');
-    const period = elements[i].getAttribute('data-period');
-    if (toRotate) {
-      new TxtType(elements[i], JSON.parse(toRotate), period);
+function type() {
+  const role = roles[i % roles.length];
+  if (!isDeleting) {
+    j++;
+    current = role.substring(0, j);
+    if (j === role.length + 1) {
+      isDeleting = true;
+      setTimeout(type, wait);
+      return;
+    }
+  } else {
+    j--;
+    current = role.substring(0, j);
+    if (j === 0) {
+      isDeleting = false;
+      i++;
     }
   }
-};
+  typedText.textContent = current;
+  setTimeout(type, isDeleting ? 60 : 120);
+}
+type();
