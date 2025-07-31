@@ -25,6 +25,11 @@
       padding: 0 2rem;
     }
 
+    .project-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
     .project-card {
       background: white;
       border-radius: 12px;
@@ -34,6 +39,7 @@
       flex-direction: column;
       transition: transform 0.3s ease;
       height: 400px;
+      cursor: pointer;
     }
 
     .project-card:hover {
@@ -58,17 +64,12 @@
       font-size: 1.1rem;
       font-weight: bold;
       color: #3366cc;
-      text-decoration: none;
-    }
-
-    .project-title:hover {
-      text-decoration: underline;
+      margin-bottom: 0.4rem;
     }
 
     .project-description {
       font-size: 0.9rem;
       color: #555;
-      margin-top: 0.4rem;
       line-height: 1.4;
     }
 
@@ -93,43 +94,43 @@
   <div class="projects-grid">
 
     <!-- Project 1 -->
-    <div class="project-card">
-      <img src="ESG_Visual.png" alt="Predicting ESG Scores from Financial Data">
-      <div class="project-content">
-        <a href="https://github.com/gambhirp/ESG-Project.git" class="project-title" target="_blank">
-          Predicting ESG Scores from Financial Data
-        </a>
-        <p class="project-description">
-          Predict ESG scores of S&P 500 companies using financial metrics and machine learning, helping investors assess sustainability performance.
-        </p>
+    <a href="https://github.com/gambhirp/ESG-Project.git" class="project-link" target="_blank">
+      <div class="project-card">
+        <img src="ESG_Visual.png" alt="Predicting ESG Scores from Financial Data">
+        <div class="project-content">
+          <div class="project-title">Predicting ESG Scores from Financial Data</div>
+          <div class="project-description">
+            Predict ESG scores of S&P 500 companies using financial metrics and machine learning, helping investors assess sustainability performance.
+          </div>
+        </div>
       </div>
-    </div>
+    </a>
 
     <!-- Project 2 -->
-    <div class="project-card">
-      <img src="Bank_Churn.png" alt="Bank Churn Prediction & Retention Strategy">
-      <div class="project-content">
-        <a href="https://github.com/gambhirp/Bank-Churn-Prediction.git" class="project-title" target="_blank">
-          Bank Churn Prediction & Retention Strategy
-        </a>
-        <p class="project-description">
-          Identifies high-risk banking customers using ML and customer data to drive real-time CRM retention strategies.
-        </p>
+    <a href="https://github.com/gambhirp/Bank-Churn-Prediction.git" class="project-link" target="_blank">
+      <div class="project-card">
+        <img src="Bank_Churn.png" alt="Bank Churn Prediction & Retention Strategy">
+        <div class="project-content">
+          <div class="project-title">Bank Churn Prediction & Retention Strategy</div>
+          <div class="project-description">
+            Identifies high-risk banking customers using ML and customer data to drive real-time CRM retention strategies.
+          </div>
+        </div>
       </div>
-    </div>
+    </a>
 
     <!-- Project 3 -->
-    <div class="project-card">
-      <img src="Hotel_Review.png" alt="Hotel Review Analysis & Sentiment Benchmarking">
-      <div class="project-content">
-        <a href="https://github.com/gambhirp/Hotel-Review-Social-Media-Analysis.git" class="project-title" target="_blank">
-          Hotel Review Analysis & Sentiment Benchmarking
-        </a>
-        <p class="project-description">
-          NLP and sentiment analysis of 500k+ Booking.com reviews to extract insights and benchmark hotel performance.
-        </p>
+    <a href="https://github.com/gambhirp/Hotel-Review-Social-Media-Analysis.git" class="project-link" target="_blank">
+      <div class="project-card">
+        <img src="Hotel_Review.png" alt="Hotel Review Analysis & Sentiment Benchmarking">
+        <div class="project-content">
+          <div class="project-title">Hotel Review Analysis & Sentiment Benchmarking</div>
+          <div class="project-description">
+            NLP and sentiment analysis of 500k+ Booking.com reviews to extract insights and benchmark hotel performance.
+          </div>
+        </div>
       </div>
-    </div>
+    </a>
 
   </div>
 
