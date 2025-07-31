@@ -6,62 +6,93 @@ body {
   color: #22223b;
 }
 
-.top-intro {
-  width: 100%;
-  text-align: center;
-  padding: 1rem;
-  background-color: #3730a3;
-  color: white;
-  font-size: 1rem;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2em 4vw;
+  background: #e9f1fa;
+  box-shadow: 0 2px 8px rgba(55, 48, 163, 0.04);
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #3730a3;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2em;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #3730a3;
   font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: #00bcd4;
 }
 
 .hero {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3rem 2rem;
-  gap: 3rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  flex-wrap: wrap;
+  min-height: 80vh;
+  padding: 2em 4vw;
+  gap: 3em;
+  background: url("prachi.jpg") right center/contain no-repeat;
+  position: relative; /* Add this if not already present */
 }
 
 .hero-content {
-  max-width: 500px;
-  flex: 1 1 45%;
+  max-width: 600px;
+  margin-left: 60px;
+  margin-top: -40px; /* Move content up */
 }
 
 .hero-content h2 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 400;
+  margin: 0 0 0.5em 0;
   color: #3730a3;
-  margin-bottom: 0.3rem;
 }
 
 .hero-content h1 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   font-weight: 700;
-  line-height: 1.3;
-  margin: 0.5rem 0 1rem 0;
+  margin: 0 0 0.5em 0;
   color: #22223b;
+  line-height: 1.2;
+  word-break: break-word; /* Ensures long words wrap */
 }
 
 #typed-text {
   color: #00bcd4;
+  padding-right: 4px;
   display: inline-block;
+  min-width: 100px; /* Ensures enough space for long roles */
+  max-width: 100%;
+  white-space: normal; /* Allows wrapping */
+  word-break: break-word;
 }
 
 .hero-content p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #475569;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.5em;
 }
 
 .button-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
+  margin-top: 20px;
 }
 
 .simple-button {
@@ -71,7 +102,9 @@ body {
   border: 1px solid #ccc;
   padding: 10px 18px;
   border-radius: 6px;
+  font-family: "Segoe UI", sans-serif;
   font-size: 14px;
+  margin-right: 12px;
   transition: all 0.3s ease;
 }
 
@@ -81,33 +114,103 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.hero-image {
-  flex: 1 1 45%;
+.top-intro {
+  width: 100%;
   text-align: center;
+  padding: 1.2em 0 1em 0;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #3730a3;
+  background: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.01em;
+  animation: fadeInDown 1.2s ease;
 }
 
-.hero-image img {
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .hero {
     flex-direction: column;
+    gap: 2em;
     text-align: center;
   }
+}
 
-  .hero-content, .hero-image {
-    flex: 1 1 100%;
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1em 1em;
   }
-
+  .nav-links {
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+    margin-top: 1em;
+  }
+  .logo {
+    font-size: 1.2rem;
+    margin-bottom: 0.5em;
+  }
+  .top-intro {
+    font-size: 1rem;
+    padding: 1em 0.5em;
+  }
+  .hero {
+    flex-direction: column;
+    padding: 1em 1em;
+    min-height: unset;
+    gap: 1.5em;
+    background-size: cover;
+    background-position: center;
+  }
+  .hero-content {
+    margin-left: 0;
+    margin-top: 0;
+    max-width: 100%;
+    text-align: center;
+  }
   .hero-content h1 {
     font-size: 2rem;
   }
-
   .hero-content h2 {
     font-size: 1.2rem;
+  }
+  .hero-image {
+    width: 100%;
+    height: auto;
+    margin: 1em 0 0 0;
+    max-width: 320px;
+    align-self: center;
+  }
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+  }
+  .simple-button,
+  .contact-links a {
+    width: 100%;
+    margin: 0.5em 0 0 0;
+    font-size: 1rem;
+    padding: 0.8em 0;
+    box-sizing: border-box;
+  }
+  .projects-list {
+    padding: 1em;
+    margin: 1em 0.5em;
+  }
+  .project-item img {
+    max-width: 100%;
+    height: auto;
   }
 }
