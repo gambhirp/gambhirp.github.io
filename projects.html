@@ -30,7 +30,7 @@
       border-radius: 12px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       overflow: hidden;
-      transition: transform 0.2s;
+      transition: transform 0.2s ease;
     }
 
     .project-card:hover {
@@ -54,10 +54,27 @@
       text-decoration: none;
     }
 
+    .project-title:hover {
+      text-decoration: underline;
+    }
+
     .project-description {
       font-size: 0.95rem;
       color: #555;
       margin-top: 0.5rem;
+    }
+
+    .back-home {
+      display: block;
+      text-align: center;
+      margin-top: 2rem;
+      color: #666;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .back-home:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -68,25 +85,21 @@
   <div class="projects-grid">
     <!-- Project 1 -->
     <div class="project-card">
-      <img src="your-image-path/esg-project.png" alt="ESG Analysis Project">
+      <img src="ESG_Visual.png" alt="Predicting ESG Scores from Financial Data">
       <div class="project-content">
-        <a href="esg-project.html" class="project-title">ESG Analysis Project</a>
-        <p class="project-description">Open-source dashboard to estimate ESG scores using financial metrics like ROE, EBITDA, and Market Cap.</p>
+        <a href="https://github.com/gambhirp/ESG-Project.git" class="project-title" target="_blank">
+          Predicting ESG Scores from Financial Data
+        </a>
+        <p class="project-description">
+          This project explores how financial metrics and industry context can be used to predict ESG scores of S&P 500 companies.
+          Using Yahoo Finance data and machine learning models like Random Forest and SVM, it identifies sector-specific ESG patterns.
+          The goal is to help investors assess sustainability performance even when ESG disclosures are incomplete.
+        </p>
       </div>
     </div>
-
-    <!-- Project 2 -->
-    <div class="project-card">
-      <img src="your-image-path/hotel-review.png" alt="Hotel Review NLP">
-      <div class="project-content">
-        <a href="hotel-review-project.html" class="project-title">Hotel Review NLP</a>
-        <p class="project-description">Analyzed 500k+ Booking.com reviews using NLP, LDA, and sentiment analysis to uncover guest experience insights.</p>
-      </div>
-    </div>
-
-    <!-- Add more project cards as needed -->
-
   </div>
+
+  <a href="index.html" class="back-home">&larr; Back to Home</a>
 
 </body>
 </html>
