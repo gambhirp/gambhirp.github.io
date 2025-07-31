@@ -9,96 +9,57 @@ body {
 .top-intro {
   width: 100%;
   text-align: center;
-  padding: 1em 1.5em;
-  font-size: 1.25rem;
+  padding: 1em 2em;
+  font-size: 1.15rem;
   font-weight: 600;
-  color: white;
-  background: #3730a3;
-  letter-spacing: 0.4px;
-  line-height: 1.4;
+  color: #3730a3;
+  background: #f0f4ff;
+  border-bottom: 2px solid #d8dafe;
+  letter-spacing: 0.2px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   animation: fadeInDown 1.2s ease;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.2em 4vw;
-  background: #e9f1fa;
-  box-shadow: 0 2px 8px rgba(55, 48, 163, 0.04);
-}
-
-.logo {
-  font-size: 1.6rem;
-  font-weight: bold;
-  letter-spacing: 2px;
-  color: #3730a3;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 2em;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links li a {
-  text-decoration: none;
-  color: #3730a3;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-.nav-links li a:hover,
-.nav-links li a.active {
-  color: #00bcd4;
-}
-
 .hero {
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-height: 70vh;
-  padding: 1.5em 4vw;
-  gap: 2em;
-  background: url("prachi.jpg") right center/contain no-repeat;
-  position: relative;
+  justify-content: space-between;
+  min-height: 85vh;
+  padding: 3em 6vw;
+  background: #f8fafc;
+  background-image: url("prachi.jpg");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: contain;
 }
 
 .hero-content {
-  max-width: 600px;
-  margin-left: 40px;
-  margin-top: -60px;
+  max-width: 620px;
+  margin-top: -60px; /* adjust space above */
 }
 
 .hero-content h2 {
   font-size: 2rem;
-  font-weight: 400;
+  font-weight: 500;
   margin: 0 0 0.5em 0;
-  color: #3730a3;
+  color: #6b21a8;
 }
 
 .hero-content h1 {
-  font-size: 2.8rem;
+  font-size: 2.6rem;
   font-weight: 700;
-  margin: 0 0 0.3em 0;
-  color: #22223b;
+  margin: 0 0 0.4em 0;
+  color: #1e293b;
   line-height: 1.2;
-  word-break: break-word;
 }
 
 #typed-text {
   color: #00bcd4;
   padding-right: 4px;
-  display: inline-block;
-  min-width: 100px;
-  max-width: 100%;
-  white-space: normal;
-  word-break: break-word;
+  font-size: 2.3rem;
+  font-weight: 600;
 }
 
 .hero-content p {
@@ -108,7 +69,7 @@ body {
 }
 
 .button-container {
-  margin-top: 20px;
+  margin-top: 1.2em;
 }
 
 .simple-button {
@@ -118,7 +79,6 @@ body {
   border: 1px solid #ccc;
   padding: 10px 18px;
   border-radius: 6px;
-  font-family: "Segoe UI", sans-serif;
   font-size: 14px;
   margin-right: 12px;
   transition: all 0.3s ease;
@@ -138,5 +98,20 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    gap: 2em;
+    text-align: center;
+    background-image: none;
+    padding: 2em;
+  }
+
+  .hero-content {
+    margin-top: 0;
   }
 }
