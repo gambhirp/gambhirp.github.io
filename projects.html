@@ -1,133 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>My Projects</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f5f9fc;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8">
+  <title>My Projects</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f9fc;
+      margin: 0;
+      padding: 0;
+    }
 
-        h1 {
-            text-align: center;
-            padding: 30px 0 10px;
-            color: #003366;
-        }
+    h1 {
+      text-align: center;
+      padding: 30px 0 10px;
+      color: #003366;
+      font-size: 32px;
+    }
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 1300px;
-            margin: auto;
-        }
+    .container {
+      max-width: 90%;
+      margin: 0 auto;
+    }
 
-        .row {
-            display: flex;
-            justify-content: center;
-            flex-wrap: nowrap;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
+    .row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
 
-        .card {
-            background-color: white;
-            width: 320px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            padding: 20px;
-            transition: transform 0.2s;
-            text-align: center;
-        }
+    .card {
+      background-color: #fff;
+      flex: 1 1 28%;
+      min-width: 300px;
+      max-width: 32%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
 
-        .card:hover {
-            transform: translateY(-5px);
-        }
+    .card:hover {
+      transform: translateY(-5px);
+    }
 
-        .card img {
-            width: 100%;
-            height: 180px;
-            object-fit: contain;
-            border-radius: 6px;
-        }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      border-radius: 6px;
+    }
 
-        .card-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #003366;
-            margin-top: 12px;
-        }
+    .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #003366;
+      margin-top: 15px;
+    }
 
-        .card-desc {
-            font-size: 14px;
-            color: #444;
-            margin-top: 6px;
-        }
+    .card-desc {
+      font-size: 15px;
+      color: #444;
+      margin-top: 8px;
+    }
 
-        .back-link {
-            display: block;
-            text-align: center;
-            margin: 30px 0 60px;
-            color: #004488;
-            text-decoration: none;
-        }
+    .back-link {
+      display: block;
+      text-align: center;
+      margin: 30px 0 60px;
+      color: #004488;
+      text-decoration: none;
+      font-size: 16px;
+    }
 
-        .back-link:hover {
-            text-decoration: underline;
-        }
+    .back-link:hover {
+      text-decoration: underline;
+    }
 
-        @media (max-width: 1050px) {
-            .row {
-                flex-wrap: wrap;
-                gap: 20px;
-            }
-            .card {
-                width: 90%;
-            }
-        }
-    </style>
+    @media (max-width: 1100px) {
+      .card {
+        flex: 1 1 45%;
+        max-width: 45%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        flex: 1 1 90%;
+        max-width: 90%;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <h1>My Projects</h1>
 
 <div class="container">
-    <div class="row">
-        <div class="card">
-            <img src="ESG_Visual.png" alt="ESG Score">
-            <div class="card-title">Predicting ESG Scores from Financial Data</div>
-            <div class="card-desc">Predict ESG scores of S&P 500 companies using financial metrics helping investors assess sustainability performance.</div>
-        </div>
-
-        <div class="card">
-            <img src="Zoetis_UI.png" alt="Zoetis UI">
-            <div class="card-title">AI-Powered CRM Automation for Zoetis</div>
-            <div class="card-desc">Transforms sales voice notes into structured customer data using Whisper and NLP-based entity extraction.</div>
-        </div>
-
-        <div class="card">
-            <img src="Bank_Churn.png" alt="Bank Churn">
-            <div class="card-title">Bank Churn Prediction & Retention Strategy</div>
-            <div class="card-desc">Identifies high-risk banking customers using ML and customer data to drive real-time CRM retention strategies.</div>
-        </div>
+  <div class="row">
+    <div class="card">
+      <img src="ESG_Visual.png" alt="ESG Score">
+      <div class="card-title">Predicting ESG Scores from Financial Data</div>
+      <div class="card-desc">Predict ESG scores of S&P 500 companies using financial metrics helping investors assess sustainability performance.</div>
     </div>
 
-    <div class="row">
-        <div class="card">
-            <img src="Hotel_Review.png" alt="Hotel Review">
-            <div class="card-title">Hotel Review Analysis & Sentiment Benchmarking</div>
-            <div class="card-desc">NLP and sentiment analysis of 500k+ Booking.com reviews to extract insights and benchmark hotel performance.</div>
-        </div>
-
-        <div class="card">
-            <img src="Fyffes_UI.png" alt="Fyffes Pest Control">
-            <div class="card-title">Pineapple Pest Control Optimization – Fyffes Case Study</div>
-            <div class="card-desc">Built Power BI dashboards to detect pest-risk zones and recommend interventions using climate and yield data.</div>
-        </div>
+    <div class="card">
+      <img src="Zoetis_UI.png" alt="Zoetis UI">
+      <div class="card-title">AI-Powered CRM Automation for Zoetis</div>
+      <div class="card-desc">Transforms sales voice notes into structured customer data using Whisper and NLP-based entity extraction.</div>
     </div>
+
+    <div class="card">
+      <img src="Bank_Churn.png" alt="Bank Churn">
+      <div class="card-title">Bank Churn Prediction & Retention Strategy</div>
+      <div class="card-desc">Identifies high-risk banking customers using ML and customer data to drive real-time CRM retention strategies.</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="card">
+      <img src="Hotel_Review.png" alt="Hotel Review">
+      <div class="card-title">Hotel Review Analysis & Sentiment Benchmarking</div>
+      <div class="card-desc">NLP and sentiment analysis of 500k+ Booking.com reviews to extract insights and benchmark hotel performance.</div>
+    </div>
+
+    <div class="card">
+      <img src="Fyffes_UI.png" alt="Fyffes Pest Control">
+      <div class="card-title">Pineapple Pest Control Optimization – Fyffes Case Study</div>
+      <div class="card-desc">Built Power BI dashboards to detect pest-risk zones and recommend interventions using climate and yield data.</div>
+    </div>
+  </div>
 </div>
 
 <a class="back-link" href="index.html">← Back to Home</a>
