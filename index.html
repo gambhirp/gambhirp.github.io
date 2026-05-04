@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Prachi Gambhir</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --pink:#F0AEBE;--pink-light:#FBE8ED;--pink-border:rgba(240,174,190,0.35);
+  --yellow:#F5DF7A;--yellow-light:#FDFAEB;--yellow-border:rgba(245,223,122,0.5);
+  --bg:#FAFAF8;--bg2:#F5F4F0;--bg3:#EEECE8;
+  --ink:#1C1A17;--ink2:#3A3833;--muted:#908D86;--border:rgba(0,0,0,0.07);
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Outfit',sans-serif;--mono:'DM Mono',monospace;
+  --shadow:0 2px 20px rgba(0,0,0,0.06);--shadow-hover:0 8px 40px rgba(0,0,0,0.1);
+}
+html{scroll-behavior:smooth;cursor:none}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9000;opacity:.7}
+#cur{position:fixed;width:7px;height:7px;background:var(--pink);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .15s,opacity .2s}
+#cur-ring{position:fixed;width:30px;height:30px;border:1.5px solid var(--pink);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.5;transition:width .35s cubic-bezier(.16,1,.3,1),height .35s,opacity .3s,border-color .3s}
+body.h #cur{transform:translate(-50%,-50%) scale(0);opacity:0}
+body.h #cur-ring{width:46px;height:46px;opacity:1;border-color:var(--pink);background:rgba(240,174,190,.08)}
+#loader{position:fixed;inset:0;background:var(--bg);z-index:8999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.8rem}
+#loader-word{display:flex;overflow:hidden}
+.lc{font-family:var(--serif);font-size:clamp(2.2rem,6vw,5rem);font-weight:300;letter-spacing:.18em;color:var(--ink);opacity:0;transform:translateY(70px);display:inline-block;animation:lu .7s cubic-bezier(.16,1,.3,1) forwards}
+.lc.p{color:var(--pink)}
+#loader-rule{width:0;height:1px;background:var(--pink);opacity:.7;animation:lw .9s ease forwards 1.3s}
+#loader-sub{font-family:var(--mono);font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fadeIn .6s ease forwards 1.5s}
+@keyframes lu{to{opacity:1;transform:translateY(0)}}
+@keyframes lw{to{width:180px}}
+@keyframes fadeIn{to{opacity:1}}
+#loader.out{animation:lout .7s ease forwards}
+@keyframes lout{to{opacity:0;pointer-events:none;visibility:hidden}}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:2rem 5rem;display:flex;justify-content:space-between;align-items:center;transition:all .5s ease}
+nav.s{background:rgba(250,250,248,.92);backdrop-filter:blur(20px);padding:1.1rem 5rem;border-bottom:1px solid var(--border);box-shadow:0 1px 16px rgba(0,0,0,.04)}
+.nlogo{font-family:var(--serif);font-size:1.1rem;font-weight:400;letter-spacing:.12em;color:var(--ink);text-decoration:none;cursor:none}
+.nlogo span{color:var(--pink)}
+.nlinks{display:flex;gap:2.5rem;list-style:none;align-items:center}
+.nlinks a{font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s;cursor:none}
+.nlinks a:hover{color:var(--ink)}
+.nav-cta{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--pink-light);border:1px solid var(--pink-border);padding:.5rem 1.2rem;text-decoration:none;transition:all .3s;cursor:none}
+.nav-cta:hover{background:var(--pink);color:var(--ink)}
+@media(max-width:700px){nav{padding:1.4rem 2rem}nav.s{padding:1rem 2rem}.nlinks{display:none}}
+#hero{padding:calc(6rem + 80px) 5rem 5rem;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+@media(max-width:700px){#hero{padding:calc(4rem + 80px) 2rem 3rem}}
+#hero-canvas{position:absolute;inset:0;z-index:0;opacity:.4}
+.hero-blob{position:absolute;z-index:1;pointer-events:none;border-radius:50%;filter:blur(80px)}
+.blob1{width:500px;height:500px;top:-150px;right:-80px;background:radial-gradient(circle,rgba(240,174,190,.35),transparent 70%);animation:blobf 8s ease-in-out infinite}
+.blob2{width:300px;height:300px;bottom:-80px;left:5%;background:radial-gradient(circle,rgba(245,223,122,.3),transparent 70%);animation:blobf 11s ease-in-out infinite reverse}
+@keyframes blobf{0%,100%{transform:scale(1) translate(0,0)}50%{transform:scale(1.08) translate(20px,-20px)}}
+.hero-inner{position:relative;z-index:2;max-width:1100px;margin:0 auto}
+.hero-eyebrow{font-family:var(--mono);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fadeUp .8s ease forwards .3s;margin-bottom:2rem;display:flex;align-items:center;gap:.9rem}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--muted)}
+.hero-h1{font-family:var(--serif);font-weight:300;line-height:.9;letter-spacing:-.01em;margin-bottom:2.5rem}
+.hero-line{display:block;font-size:clamp(3.2rem,9vw,7.5rem);overflow:hidden}
+.hero-line-inner{display:block;opacity:0;transform:translateY(105%);animation:slideUp .95s cubic-bezier(.16,1,.3,1) forwards}
+.hero-line:nth-child(1) .hero-line-inner{animation-delay:.4s}
+.hero-line:nth-child(2) .hero-line-inner{animation-delay:.55s;color:var(--pink)}
+.hero-meta{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;opacity:0;animation:fadeUp .8s ease forwards .9s}
+.hero-meta-tag{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:.35rem .85rem}
+.hero-meta-tag.active{background:var(--pink-light);border-color:var(--pink-border);color:var(--ink)}
+@keyframes slideUp{to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{0%{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.mq{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:.75rem 0;overflow:hidden}
+.mq-track{display:flex;width:max-content;animation:mqAnim 28s linear infinite}
+.mq-item{font-family:var(--mono);font-size:.57rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);padding:0 2.5rem;white-space:nowrap;display:flex;align-items:center;gap:1.5rem}
+.mq-item::after{content:'✦';color:var(--pink);font-size:.4rem}
+@keyframes mqAnim{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.wrap{max-width:1100px;margin:0 auto;padding:0 5rem}
+@media(max-width:900px){.wrap{padding:0 2rem}}
+.eyebrow{font-family:var(--mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem}
+.eyebrow::before{content:'';width:18px;height:1px;background:var(--muted)}
+#projects{padding:5rem 0 8rem}
+.proj-head{margin-bottom:3.5rem}
+.display{font-family:var(--serif);font-weight:300;line-height:1.05;letter-spacing:-.01em;font-size:clamp(2rem,4vw,3.4rem)}
+.proj-count{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.6rem}
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+@media(max-width:750px){.proj-grid{grid-template-columns:1fr}}
+.proj-card{background:var(--bg);border:1px solid var(--border);position:relative;overflow:hidden;transition:box-shadow .4s,transform .4s,border-color .4s;cursor:none;display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.proj-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-5px);border-color:var(--pink-border)}
+.proj-card.feat{grid-column:1/-1}
+@media(max-width:750px){.proj-card.feat{grid-column:auto}}
+.feat-inner{display:grid;grid-template-columns:1fr 1fr}
+@media(max-width:750px){.feat-inner{grid-template-columns:1fr}}
+.feat-vis{border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;padding:2.5rem 2rem;background:var(--bg2)}
+@media(max-width:750px){.feat-vis{border-right:none;border-bottom:1px solid var(--border)}}
+.proj-vis{width:100%;background:var(--bg2);border-bottom:1px solid var(--border)}
+.proj-vis svg{display:block;width:100%}
+.proj-body{padding:2rem 2.5rem 2.5rem;flex:1;display:flex;flex-direction:column;position:relative}
+.proj-badge{position:absolute;top:1.4rem;right:1.4rem;background:var(--yellow-light);border:1px solid var(--yellow-border);padding:.28rem .7rem;font-family:var(--mono);font-size:.47rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.proj-tag-row{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem}
+.proj-tag{font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;padding:.22rem .65rem;border:1px solid var(--border);color:var(--muted)}
+.proj-tag.hi{background:var(--pink-light);border-color:var(--pink-border);color:var(--ink)}
+.proj-tag.ye{background:var(--yellow-light);border-color:var(--yellow-border);color:var(--ink)}
+.proj-title{font-family:var(--serif);font-size:1.5rem;font-weight:400;line-height:1.2;color:var(--ink);margin-bottom:.8rem}
+.proj-card.feat .proj-title{font-size:1.9rem}
+.proj-desc{color:var(--muted);font-size:.83rem;line-height:1.85;font-weight:300;margin-bottom:1.5rem;flex:1}
+.proj-metrics{display:flex;gap:2.5rem;flex-wrap:wrap;margin-bottom:1.5rem;padding-top:1.2rem;border-top:1px solid var(--border)}
+.pm-val{font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--ink);line-height:1}
+.pm-val span{color:var(--pink)}
+.pm-label{font-family:var(--mono);font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.25rem}
+.proj-link{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:.3rem;transition:all .3s;width:fit-content}
+.proj-link:hover{color:var(--pink);border-color:var(--pink-border);gap:.8rem}
+.proj-link svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:1.8;transition:transform .3s}
+.proj-link:hover svg{transform:translate(2px,-2px)}
+.r{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.r.v{opacity:1;transform:none}
+.rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}.rd4{transition-delay:.4s}
+footer{background:var(--bg3);border-top:1px solid var(--border);padding:2.5rem 0}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.2rem}
+.ft-logo{font-family:var(--serif);font-size:.95rem;font-weight:300;letter-spacing:.1em;color:var(--ink2);text-decoration:none;cursor:none}
+.ft-logo span{color:var(--pink)}
+.ft-copy{font-family:var(--mono);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.ft-links{display:flex;gap:1.8rem}
+.ft-links a{font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s;cursor:none}
+.ft-links a:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<div id="loader">
+  <div id="loader-word"></div>
+  <div id="loader-rule"></div>
+  <div id="loader-sub">Analytics &amp; Data · Dublin</div>
+</div>
+
+<nav id="nav">
+  <!-- Replace href with your actual portfolio URL once hosted -->
+  <a class="nlogo" href="#" target="_blank">P<span>G</span></a>
+  <ul class="nlinks">
+    <li><a href="#projects">All Projects</a></li>
+    <li><a href="https://www.linkedin.com/in/prachi-gambhir/" target="_blank">LinkedIn</a></li>
+  </ul>
+  <a href="mailto:prachi.gambhir03@gmail.com" class="nav-cta">Say Hello</a>
+</nav>
+
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-blob blob1"></div>
+  <div class="hero-blob blob2"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Selected Work · MSc Business Analytics · TCD</div>
+    <h1 class="hero-h1">
+      <span class="hero-line"><span class="hero-line-inner">Projects.</span></span>
+      <span class="hero-line"><span class="hero-line-inner">Case Studies.</span></span>
+    </h1>
+    <div class="hero-meta">
+      <div class="hero-meta-tag active">5 Projects</div>
+      <div class="hero-meta-tag">NLP · ML · Power BI</div>
+      <div class="hero-meta-tag">Python · SQL · Tableau</div>
+      <div class="hero-meta-tag">Dublin, Ireland</div>
+    </div>
+  </div>
+</section>
+
+<div class="mq" aria-hidden="true"><div class="mq-track" id="mq-track"></div></div>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="proj-head r">
+      <div class="eyebrow">Portfolio</div>
+      <div class="display">Featured work &amp; research</div>
+      <div class="proj-count">5 projects · NLP · Machine Learning · Business Intelligence · Forecasting</div>
+    </div>
+
+    <div class="proj-grid">
+
+      <!-- ═══ FEATURED: ZOETIS CRM ═══ -->
+      <article class="proj-card feat r">
+        <div class="feat-inner">
+          <div class="feat-vis">
+            <svg viewBox="0 0 320 290" xmlns="http://www.w3.org/2000/svg" style="max-width:320px;width:100%">
+              <!-- Grid bg -->
+              <line x1="0" y1="65"  x2="320" y2="65"  stroke="#EEECE8" stroke-width=".8"/>
+              <line x1="0" y1="140" x2="320" y2="140" stroke="#EEECE8" stroke-width=".8"/>
+              <line x1="0" y1="215" x2="320" y2="215" stroke="#EEECE8" stroke-width=".8"/>
+
+              <!-- Step 1: Voice Note -->
+              <rect x="10" y="18" width="86" height="64" rx="6" fill="#FBE8ED" stroke="#F0AEBE" stroke-width="1"/>
+              <text x="53" y="36" font-family="'DM Mono',monospace" font-size="7" fill="#908D86" text-anchor="middle" letter-spacing=".08em">VOICE NOTE</text>
+              <!-- waveform -->
+              <rect x="20" y="50" width="3" height="10" rx="1.5" fill="#F0AEBE"/>
+              <rect x="25" y="44" width="3" height="22" rx="1.5" fill="#F0AEBE"/>
+              <rect x="30" y="52" width="3" height="8"  rx="1.5" fill="#F0AEBE"/>
+              <rect x="35" y="42" width="3" height="24" rx="1.5" fill="#F0AEBE"/>
+              <rect x="40" y="50" width="3" height="12" rx="1.5" fill="#F0AEBE"/>
+              <rect x="45" y="45" width="3" height="20" rx="1.5" fill="#F0AEBE"/>
+              <rect x="50" y="52" width="3" height="9"  rx="1.5" fill="#F0AEBE"/>
+              <rect x="55" y="41" width="3" height="24" rx="1.5" fill="#F0AEBE"/>
+              <rect x="60" y="50" width="3" height="12" rx="1.5" fill="#F0AEBE"/>
+              <rect x="65" y="47" width="3" height="16" rx="1.5" fill="#F0AEBE"/>
+              <rect x="70" y="54" width="3" height="8"  rx="1.5" fill="#F0AEBE"/>
+              <rect x="75" y="50" width="3" height="14" rx="1.5" fill="#F0AEBE"/>
+
+              <!-- Arrow + label: Whisper -->
+              <defs>
+                <marker id="a1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                  <path d="M2 2L8 5L2 8" fill="none" stroke="#908D86" stroke-width="1.5" stroke-linecap="round"/>
+                </marker>
+              </defs>
+              <line x1="100" y1="50" x2="118" y2="50" stroke="#908D86" stroke-width="1" marker-end="url(#a1)"/>
+              <text x="109" y="45" font-family="'DM Mono',monospace" font-size="6.5" fill="#908D86" text-anchor="middle">Whisper</text>
+
+              <!-- Step 2: Transcript -->
+              <rect x="120" y="18" width="90" height="64" rx="6" fill="#F5F4F0" stroke="#EEECE8" stroke-width="1"/>
+              <text x="165" y="36" font-family="'DM Mono',monospace" font-size="7" fill="#908D86" text-anchor="middle" letter-spacing=".06em">TRANSCRIPT</text>
+              <rect x="131" y="44" width="56" height="3.5" rx="1.5" fill="#D0CCC4"/>
+              <rect x="131" y="51" width="44" height="3.5" rx="1.5" fill="#D0CCC4"/>
+              <rect x="131" y="58" width="52" height="3.5" rx="1.5" fill="#D0CCC4"/>
+              <rect x="131" y="65" width="34" height="3.5" rx="1.5" fill="#D0CCC4"/>
+
+              <!-- Arrow + label: NLP -->
+              <defs>
+                <marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+                  <path d="M2 2L8 5L2 8" fill="none" stroke="#908D86" stroke-width="1.5" stroke-linecap="round"/>
+                </marker>
+              </defs>
+              <line x1="213" y1="50" x2="229" y2="50" stroke="#908D86" stroke-width="1" marker-end="url(#a2)"/>
+              <text x="221" y="45" font-family="'DM Mono',monospace" font-size="6.5" fill="#908D86" text-anchor="middle">NLP</text>
+
+              <!-- Step 3: Entities -->
+              <rect x="231" y="18" width="82" height="64" rx="6" fill="#FDFAEB" stroke="#F5DF7A" stroke-width="1"/>
+              <text x="272" y="36" font-family="'DM Mono',monospace" font-size="7" fill="#908D86" text-anchor="middle" letter-spacing=".05em">ENTITIES</text>
+              <rect x="241" y="43" width="32" height="10" rx="5" fill="#F5DF7A" opacity=".8"/>
+              <text x="257" y="51" font-family="'DM Mono',monospace" font-size="6.5" fill="#1C1A17" text-anchor="middle">Account</text>
+              <rect x="277" y="43" width="30" height="10" rx="5" fill="#F0AEBE" opacity=".8"/>
+              <text x="292" y="51" font-family="'DM Mono',monospace" font-size="6.5" fill="#1C1A17" text-anchor="middle">Product</text>
+              <rect x="241" y="57" width="36" height="10" rx="5" fill="#F5DF7A" opacity=".5"/>
+              <text x="259" y="65" font-family="'DM Mono',monospace" font-size="6" fill="#1C1A17" text-anchor="middle">Follow-up</text>
+              <rect x="281" y="57" width="28" height="10" rx="5" fill="#F0AEBE" opacity=".5"/>
+              <text x="295" y="65" font-family="'DM Mono',monospace" font-size="6" fill="#1C1A17" text-anchor="middle">Action</text>
+
+              <!-- Down arrow -->
+              <defs>
+                <marker id="a3" viewBox="0 0 10 10" refX="5" refY="8" markerWidth="5" markerHeight="5" orient="auto">
+                  <path d="M2 2L5 8L8 2" fill="none" stroke="#908D86" stroke-width="1.5" stroke-linecap="round"/>
+                </marker>
+              </defs>
+              <line x1="160" y1="86" x2="160" y2="108" stroke="#908D86" stroke-width="1" marker-end="url(#a3)"/>
+              <text x="176" y="100" font-family="'DM Mono',monospace" font-size="6.5" fill="#908D86">auto-populate</text>
+
+              <!-- CRM Panel -->
+              <rect x="20" y="112" width="280" height="140" rx="8" fill="#FAFAF8" stroke="#EEECE8" stroke-width="1.5"/>
+              <!-- CRM header -->
+              <rect x="20" y="112" width="280" height="24" rx="8" fill="#EEECE8"/>
+              <rect x="20" y="126" width="280" height="10" rx="0" fill="#EEECE8"/>
+              <text x="36" y="128" font-family="'DM Mono',monospace" font-size="8" fill="#3A3833" letter-spacing=".08em">CRM RECORD</text>
+              <!-- Fields -->
+              <text x="36" y="155" font-family="'DM Mono',monospace" font-size="7.5" fill="#908D86">Account</text>
+              <rect x="98" y="145" width="190" height="14" rx="3" fill="#FBE8ED" stroke="#F0AEBE" stroke-width=".5"/>
+              <text x="107" y="155.5" font-family="'Outfit',sans-serif" font-size="8" fill="#1C1A17">Zoetis Ireland Ltd.</text>
+
+              <text x="36" y="177" font-family="'DM Mono',monospace" font-size="7.5" fill="#908D86">Product</text>
+              <rect x="98" y="167" width="190" height="14" rx="3" fill="#FBE8ED" stroke="#F0AEBE" stroke-width=".5"/>
+              <text x="107" y="177.5" font-family="'Outfit',sans-serif" font-size="8" fill="#1C1A17">Simparica Trio (12-pack)</text>
+
+              <text x="36" y="199" font-family="'DM Mono',monospace" font-size="7.5" fill="#908D86">Next Step</text>
+              <rect x="98" y="189" width="190" height="14" rx="3" fill="#FDFAEB" stroke="#F5DF7A" stroke-width=".5"/>
+              <text x="107" y="199.5" font-family="'Outfit',sans-serif" font-size="7.5" fill="#1C1A17">Follow-up call — Q3 stock review</text>
+
+              <text x="36" y="221" font-family="'DM Mono',monospace" font-size="7.5" fill="#908D86">Sentiment</text>
+              <rect x="98" y="211" width="58" height="14" rx="7" fill="#D4EDDA" stroke="#8FC99A" stroke-width=".5"/>
+              <text x="127" y="221.5" font-family="'DM Mono',monospace" font-size="7.5" fill="#2D6B45" text-anchor="middle">Positive</text>
+
+              <!-- Accuracy badge -->
+              <rect x="210" y="209" width="84" height="18" rx="4" fill="#F5DF7A" opacity=".85"/>
+              <text x="252" y="221.5" font-family="'DM Mono',monospace" font-size="7.5" fill="#1C1A17" text-anchor="middle" letter-spacing=".04em">~90% accuracy</text>
+
+              <!-- Zero manual label -->
+              <text x="160" y="272" font-family="'DM Mono',monospace" font-size="7" fill="#908D86" text-anchor="middle" letter-spacing=".06em">ZERO MANUAL DATA ENTRY</text>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <span class="proj-badge">Featured</span>
+            <div class="proj-tag-row">
+              <span class="proj-tag hi">NLP</span>
+              <span class="proj-tag hi">Whisper ASR</span>
+              <span class="proj-tag">CRM Automation</span>
+              <span class="proj-tag ye">B2B SaaS</span>
+            </div>
+            <h2 class="proj-title">AI-Powered CRM Automation for Zoetis</h2>
+            <p class="proj-desc">Transforms unstructured field-rep voice notes into structured CRM records using OpenAI Whisper transcription and a custom NLP entity-extraction pipeline — eliminating manual data entry entirely.</p>
+            <div class="proj-metrics">
+              <div>
+                <div class="pm-val">~90<span>%</span></div>
+                <div class="pm-label">Extraction accuracy</div>
+              </div>
+              <div>
+                <div class="pm-val">0<span>×</span></div>
+                <div class="pm-label">Manual CRM entry</div>
+              </div>
+            </div>
+            <a class="proj-link" href="https://github.com/gambhirp/Zoetis" target="_blank" rel="noopener">
+              View on GitHub <svg viewBox="0 0 12 12"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ═══ ESG SCORE ═══ -->
+      <article class="proj-card r rd1">
+        <div class="proj-vis" style="padding:1.8rem 1.5rem 1rem">
+          <svg viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg">
+            <line x1="36" y1="10" x2="36" y2="138" stroke="#EEECE8" stroke-width="1"/>
+            <line x1="36" y1="138" x2="290" y2="138" stroke="#EEECE8" stroke-width="1"/>
+            <text x="30" y="14"  font-family="'DM Mono',monospace" font-size="7" fill="#908D86" text-anchor="end">80</text>
+            <text x="30" y="47"  font-family="'DM Mono',monospace" font-size="7" fill="#908D86" text-anchor="end">60</text>
+            <text x="30" y="80"  font-family="'DM Mono',monospace" font-size="7" fill="#908D86" text-anchor="end">40</text>
+            <text x="30" y="113" font-family="'DM Mono',monospace" font-size="7" fill="#908D86" text-anchor="end">20</text>
+            <line x1="33" y1="13"  x2="36" y2="13"  stroke="#EEECE8" stroke-width="1"/>
+            <line x1="33" y1="46"  x2="36" y2="46"  stroke="#EEECE8" stroke-width="1"/>
+            <line x1="33" y1="79"  x2="36" y2="79"  stroke="#EEECE8" stroke-width="1"/>
+            <line x1="33" y1="112" x2="36" y2="112" stroke="#EEECE8" stroke-width="1"/>
+            <text x="163" y="153" font-family="'DM Mono',monospace" font-size="7" fill="#908D86" text-anchor="middle" letter-spacing=".06em">REVENUE GROWTH →</text>
+            <text x="10" y="74" font-family="'DM Mono',monospace" font-size="7" fill="#908D86" text-anchor="middle" transform="rotate(-90 10 74)" letter-spacing=".06em">ESG SCORE</text>
+            <line x1="36" y1="13"  x2="290" y2="13"  stroke="#EEECE8" stroke-width=".5" stroke-dasharray="3 4"/>
+            <line x1="36" y1="46"  x2="290" y2="46"  stroke="#EEECE8" stroke-width=".5" stroke-dasharray="3 4"/>
+            <line x1="36" y1="79"  x2="290" y2="79"  stroke="#EEECE8" stroke-width=".5" stroke-dasharray="3 4"/>
+            <line x1="36" y1="112" x2="290" y2="112" stroke="#EEECE8" stroke-width=".5" stroke-dasharray="3 4"/>
+            <line x1="50" y1="118" x2="278" y2="22" stroke="#F0AEBE" stroke-width="1.2" stroke-dasharray="4 3" opacity=".6"/>
+            <circle cx="65"  cy="34"  r="4.5" fill="#F0AEBE" opacity=".85"/>
+            <circle cx="88"  cy="52"  r="3.5" fill="#F5DF7A" opacity=".85"/>
+            <circle cx="72"  cy="70"  r="4"   fill="#908D86" opacity=".4"/>
+            <circle cx="110" cy="30"  r="5"   fill="#F0AEBE" opacity=".9"/>
+            <circle cx="130" cy="58"  r="3.5" fill="#F5DF7A" opacity=".8"/>
+            <circle cx="95"  cy="95"  r="3"   fill="#908D86" opacity=".4"/>
+            <circle cx="155" cy="42"  r="4.5" fill="#F0AEBE" opacity=".75"/>
+            <circle cx="175" cy="68"  r="3.5" fill="#F5DF7A" opacity=".7"/>
+            <circle cx="148" cy="88"  r="4"   fill="#908D86" opacity=".4"/>
+            <circle cx="200" cy="28"  r="5.5" fill="#F0AEBE" opacity=".9"/>
+            <circle cx="218" cy="50"  r="4"   fill="#F5DF7A" opacity=".75"/>
+            <circle cx="192" cy="78"  r="3"   fill="#908D86" opacity=".4"/>
+            <circle cx="240" cy="35"  r="4.5" fill="#F0AEBE" opacity=".8"/>
+            <circle cx="258" cy="20"  r="5"   fill="#F0AEBE" opacity=".95"/>
+            <circle cx="265" cy="55"  r="3.5" fill="#F5DF7A" opacity=".7"/>
+            <circle cx="230" cy="95"  r="3"   fill="#908D86" opacity=".4"/>
+            <circle cx="277" cy="38"  r="4"   fill="#F0AEBE" opacity=".85"/>
+            <circle cx="120" cy="115" r="3"   fill="#908D86" opacity=".35"/>
+            <circle cx="168" cy="108" r="3.5" fill="#908D86" opacity=".35"/>
+            <circle cx="50"  cy="158" r="3.5" fill="#F0AEBE" opacity=".85"/>
+            <text x="57" y="162" font-family="'DM Mono',monospace" font-size="6.5" fill="#908D86">High ESG</text>
+            <circle cx="110" cy="158" r="3.5" fill="#F5DF7A" opacity=".85"/>
+            <text x="117" y="162" font-family="'DM Mono',monospace" font-size="6.5" fill="#908D86">Mid ESG</text>
+            <circle cx="168" cy="158" r="3.5" fill="#908D86" opacity=".5"/>
+            <text x="175" y="162" font-family="'DM Mono',monospace" font-size="6.5" fill="#908D86">Low ESG</text>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <div class="proj-tag-row">
+            <span class="proj-tag hi">Machine Learning</span>
+            <span class="proj-tag">Finance</span>
+            <span class="proj-tag ye">S&amp;P 500</span>
+          </div>
+          <h2 class="proj-title">Predicting ESG Scores from Financial Data</h2>
+          <p class="proj-desc">Predict ESG scores of S&amp;P 500 companies from financial metrics using regression and tree-based models — helping investors assess sustainability without costly third-party providers.</p>
+          <div class="proj-metrics">
+            <div>
+              <div class="pm-val">500<span>+</span></div>
+              <div class="pm-label">Companies modelled</div>
+            </div>
+          </div>
+          <a class="proj-link" href="https://github.com/gambhirp/ESG-Project" target="_blank" rel="noopener">
+            View on GitHub <svg viewBox="0 0 12 12"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- ═══ BANK CHURN ═══ -->
+      <article class="proj-card r rd2">
+        <div class="proj-vis" style="padding:1.8rem 1.5rem 1rem">
+          <svg viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg">
+            <text x="8" y="14" font-family="'DM Mono',monospace" font-size="7" fill="#908D86" letter-spacing=".08em">FEATURE IMPORTANCE</text>
+            <text x="78" y="32"  font-family="'DM Mono',monospace" font-size="7.5" fill="#908D86" text-anchor="end">Balance</text>
+            <text x="78" y="51"  font-family="'DM Mono',monospace" font-size="7.5" fill="#908D86" text-anchor="end">Age</text>
+            <text x="78" y="70"  font-family="'DM Mono',monospace" font-size="7.5" fill="#908D86" text-anchor="end">Tenure</text>
+            <text x="78" y="89"  font-family="'DM Mono',monospace" font-size="7.5" fill="#908D86" text-anchor="end">Products</text>
+            <text x="78" y="108" font-family="'DM Mono',monospace" font-size="7.5" fill="#908D86" text-anchor="end">Activity</text>
+            <text x="78" y="127" font-family="'DM Mono',monospace" font-size="7.5" fill="#908D86" text-anchor="end">Geography</text>
+            <rect x="82" y="23"  width="108" height="11" rx="2" fill="#F0AEBE" opacity=".9"/>
+            <rect x="82" y="42"  width="90"  height="11" rx="2" fill="#F0AEBE" opacity=".75"/>
+            <rect x="82" y="61"  width="72"  height="11" rx="2" fill="#F5DF7A" opacity=".9"/>
+            <rect x="82" y="80"  width="54"  height="11" rx="2" fill="#F5DF7A" opacity=".7"/>
+            <rect x="82" y="99"  width="45"  height="11" rx="2" fill="#EEECE8"/>
+            <rect x="82" y="118" width="30"  height="11" rx="2" fill="#EEECE8"/>
+            <text x="194" y="32.5"  font-family="'DM Mono',monospace" font-size="7" fill="#1C1A17">0.34</text>
+            <text x="176" y="51.5"  font-family="'DM Mono',monospace" font-size="7" fill="#1C1A17">0.28</text>
+            <text x="158" y="70.5"  font-family="'DM Mono',monospace" font-size="7" fill="#1C1A17">0.22</text>
+            <text x="140" y="89.5"  font-family="'DM Mono',monospace" font-size="7" fill="#1C1A17">0.17</text>
+            <text x="131" y="108.5" font-family="'DM Mono',monospace" font-size="7" fill="#908D86">0.14</text>
+            <text x="116" y="127.5" font-family="'DM Mono',monospace" font-size="7" fill="#908D86">0.09</text>
+            <line x1="207" y1="18" x2="207" y2="135" stroke="#EEECE8" stroke-width="1"/>
+            <text x="252" y="14" font-family="'DM Mono',monospace" font-size="7" fill="#908D86" text-anchor="middle" letter-spacing=".04em">CONFUSION</text>
+            <rect x="215" y="22" width="38" height="38" rx="3" fill="#FBE8ED" stroke="#F0AEBE" stroke-width=".5"/>
+            <text x="234" y="37" font-family="'DM Mono',monospace" font-size="11" fill="#1C1A17" text-anchor="middle" font-weight="bold">847</text>
+            <text x="234" y="51" font-family="'DM Mono',monospace" font-size="6.5" fill="#908D86" text-anchor="middle">TP</text>
+            <rect x="255" y="22" width="38" height="38" rx="3" fill="#F5F4F0" stroke="#EEECE8" stroke-width=".5"/>
+            <text x="274" y="37" font-family="'DM Mono',monospace" font-size="11" fill="#908D86" text-anchor="middle">63</text>
+            <text x="274" y="51" font-family="'DM Mono',monospace" font-size="6.5" fill="#908D86" text-anchor="middle">FP</text>
+            <rect x="215" y="62" width="38" height="38" rx="3" fill="#F5F4F0" stroke="#EEECE8" stroke-width=".5"/>
+            <text x="234" y="77" font-family="'DM Mono',monospace" font-size="11" fill="#908D86" text-anchor="middle">48</text>
+            <text x="234" y="91" font-family="'DM Mono',monospace" font-size="6.5" fill="#908D86" text-anchor="middle">FN</text>
+            <rect x="255" y="62" width="38" height="38" rx="3" fill="#FDFAEB" stroke="#F5DF7A" stroke-width=".5"/>
+            <text x="274" y="77" font-family="'DM Mono',monospace" font-size="11" fill="#1C1A17" text-anchor="middle" font-weight="bold">742</text>
+            <text x="274" y="91" font-family="'DM Mono',monospace" font-size="6.5" fill="#908D86" text-anchor="middle">TN</text>
+            <rect x="215" y="106" width="78" height="17" rx="8" fill="#F0AEBE" opacity=".7"/>
+            <text x="254" y="118" font-family="'DM Mono',monospace" font-size="7.5" fill="#1C1A17" text-anchor="middle" letter-spacing=".04em">AUC  0.91</text>
+            <text x="8" y="155" font-family="'DM Mono',monospace" font-size="7" fill="#908D86">Model: XGBoost + SMOTE oversampling</text>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <div class="proj-tag-row">
+            <span class="proj-tag hi">Classification</span>
+            <span class="proj-tag">XGBoost</span>
+            <span class="proj-tag ye">Finance</span>
+          </div>
+          <h2 class="proj-title">Bank Churn Prediction &amp; Retention Strategy</h2>
+          <p class="proj-desc">Identifies high-risk banking customers using ML classification, then maps model predictions to real-time CRM retention triggers — bridging the gap between model output and business action.</p>
+          <div class="proj-metrics">
+            <div>
+              <div class="pm-val">0.91<span> AUC</span></div>
+              <div class="pm-label">Model performance</div>
+            </div>
+          </div>
+          <a class="proj-link" href="https://github.com/gambhirp/Bank-Churn-Prediction" target="_blank" rel="noopener">
+            View on GitHub <svg viewBox="0 0 12 12"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- ═══ HOTEL REVIEWS ═══ -->
+      <article class="proj-card r rd3">
+        <div class="proj-vis" style="padding:1.8rem 1.5rem 1rem">
+          <svg viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg">
+            <text x="8" y="14" font-family="'DM Mono',monospace" font-size="7" fill="#908D86" letter-spacing=".08em">SENTIMENT · 500K REVIEWS</text>
+            <text x="62" y="36"  font-family="'DM Mono',monospace" font-size="7.5" fill="#3A6B45" text-anchor="end">Positive</text>
+            <rect x="66" y="27" width="172" height="13" rx="3" fill="#EEECE8"/>
+            <rect x="66" y="27" width="150" height="13" rx="3" fill="#8FC99A" opacity=".85"/>
+            <text x="221" y="37.5" font-family="'DM Mono',monospace" font-size="7.5" fill="#3A6B45">71%</text>
+            <text x="62" y="57"  font-family="'DM Mono',monospace" font-size="7.5" fill="#908D86" text-anchor="end">Neutral</text>
+            <rect x="66" y="48" width="172" height="13" rx="3" fill="#EEECE8"/>
+            <rect x="66" y="48" width="57"  height="13" rx="3" fill="#D0CCC4" opacity=".9"/>
+            <text x="128" y="58.5" font-family="'DM Mono',monospace" font-size="7.5" fill="#908D86">18%</text>
+            <text x="62" y="78"  font-family="'DM Mono',monospace" font-size="7.5" fill="#B05533" text-anchor="end">Negative</text>
+            <rect x="66" y="69" width="172" height="13" rx="3" fill="#EEECE8"/>
+            <rect x="66" y="69" width="27"  height="13" rx="3" fill="#E8A090" opacity=".9"/>
+            <text x="98"  y="79.5" font-family="'DM Mono',monospace" font-size="7.5" fill="#B05533">11%</text>
+            <line x1="8" y1="92" x2="292" y2="92" stroke="#EEECE8" stroke-width="1"/>
+            <text x="8" y="106" font-family="'DM Mono',monospace" font-size="7" fill="#908D86" letter-spacing=".08em">TOP THEMES</text>
+            <text x="18"  y="124" font-family="'Outfit',sans-serif" font-size="14" fill="#F0AEBE" font-weight="500">cleanliness</text>
+            <text x="120" y="121" font-family="'Outfit',sans-serif" font-size="10" fill="#908D86" font-weight="300">location</text>
+            <text x="178" y="122" font-family="'Outfit',sans-serif" font-size="12" fill="#F5DF7A" font-weight="500">staff</text>
+            <text x="215" y="120" font-family="'Outfit',sans-serif" font-size="8.5" fill="#908D86" font-weight="300">value</text>
+            <text x="252" y="123" font-family="'Outfit',sans-serif" font-size="10.5" fill="#F0AEBE" font-weight="400" opacity=".7">wifi</text>
+            <text x="18"  y="142" font-family="'Outfit',sans-serif" font-size="9.5" fill="#908D86" font-weight="300">breakfast</text>
+            <text x="85"  y="144" font-family="'Outfit',sans-serif" font-size="12.5" fill="#F0AEBE" font-weight="400">comfort</text>
+            <text x="162" y="142" font-family="'Outfit',sans-serif" font-size="9" fill="#908D86" font-weight="300">noise</text>
+            <text x="200" y="144" font-family="'Outfit',sans-serif" font-size="11" fill="#F5DF7A" font-weight="400">service</text>
+            <text x="258" y="143" font-family="'Outfit',sans-serif" font-size="9" fill="#908D86" font-weight="300">price</text>
+            <text x="18"  y="160" font-family="'Outfit',sans-serif" font-size="8.5" fill="#908D86" font-weight="300">parking</text>
+            <text x="74"  y="160" font-family="'Outfit',sans-serif" font-size="9" fill="#F0AEBE" font-weight="300" opacity=".6">amenities</text>
+            <text x="150" y="160" font-family="'Outfit',sans-serif" font-size="8.5" fill="#908D86" font-weight="300">check-in</text>
+            <text x="218" y="160" font-family="'Outfit',sans-serif" font-size="8.5" fill="#F5DF7A" font-weight="300">view</text>
+            <text x="252" y="160" font-family="'Outfit',sans-serif" font-size="8" fill="#908D86" font-weight="300">pool</text>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <div class="proj-tag-row">
+            <span class="proj-tag hi">NLP</span>
+            <span class="proj-tag hi">Sentiment Analysis</span>
+            <span class="proj-tag ye">Hospitality</span>
+          </div>
+          <h2 class="proj-title">Hotel Review Analysis &amp; Sentiment Benchmarking</h2>
+          <p class="proj-desc">NLP and sentiment analysis across 500k+ Booking.com reviews to extract granular guest insights and benchmark hotel performance — surfacing patterns that aggregate star ratings miss.</p>
+          <div class="proj-metrics">
+            <div>
+              <div class="pm-val">500<span>k</span></div>
+              <div class="pm-label">Reviews analysed</div>
+            </div>
+          </div>
+          <a class="proj-link" href="https://github.com/gambhirp/Hotel-Review-Social-Media-Analysis" target="_blank" rel="noopener">
+            View on GitHub <svg viewBox="0 0 12 12"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- ═══ FYFFES ═══ -->
+      <article class="proj-card r rd4">
+        <div class="proj-vis" style="padding:1.8rem 1.5rem 1rem">
+          <svg viewBox="0 0 300 168" xmlns="http://www.w3.org/2000/svg">
+            <text x="8" y="14" font-family="'DM Mono',monospace" font-size="7" fill="#908D86" letter-spacing=".08em">PEST RISK HEATMAP · PLANTATION ZONES</text>
+            <rect x="8"   y="22" width="22" height="16" rx="2" fill="#D4EDDA"/>
+            <rect x="32"  y="22" width="22" height="16" rx="2" fill="#F5DF7A" opacity=".7"/>
+            <rect x="56"  y="22" width="22" height="16" rx="2" fill="#D4EDDA"/>
+            <rect x="80"  y="22" width="22" height="16" rx="2" fill="#F5DF7A" opacity=".9"/>
+            <rect x="104" y="22" width="22" height="16" rx="2" fill="#F0AEBE" opacity=".7"/>
+            <rect x="128" y="22" width="22" height="16" rx="2" fill="#D4EDDA"/>
+            <rect x="152" y="22" width="22" height="16" rx="2" fill="#F5DF7A" opacity=".5"/>
+            <rect x="176" y="22" width="22" height="16" rx="2" fill="#D4EDDA"/>
+            <rect x="8"   y="40" width="22" height="16" rx="2" fill="#F5DF7A" opacity=".6"/>
+            <rect x="32"  y="40" width="22" height="16" rx="2" fill="#F0AEBE" opacity=".8"/>
+            <rect x="56"  y="40" width="22" height="16" rx="2" fill="#E8908A" opacity=".9"/>
+            <rect x="80"  y="40" width="22" height="16" rx="2" fill="#F0AEBE" opacity=".9"/>
+            <rect x="104" y="40" width="22" height="16" rx="2" fill="#E8908A"/>
+            <rect x="128" y="40" width="22" height="16" rx="2" fill="#F0AEBE" opacity=".6"/>
+            <rect x="152" y="40" width="22" height="16" rx="2" fill="#F5DF7A" opacity=".8"/>
+            <rect x="176" y="40" width="22" height="16" rx="2" fill="#D4EDDA"/>
+            <rect x="8"   y="58" width="22" height="16" rx="2" fill="#D4EDDA"/>
+            <rect x="32"  y="58" width="22" height="16" rx="2" fill="#F5DF7A" opacity=".5"/>
+            <rect x="56"  y="58" width="22" height="16" rx="2" fill="#F0AEBE" opacity=".7"/>
+            <rect x="80"  y="58" width="22" height="16" rx="2" fill="#E8908A" opacity=".8"/>
+            <rect x="104" y="58" width="22" height="16" rx="2" fill="#F0AEBE" opacity=".8"/>
+            <rect x="128" y="58" width="22" height="16" rx="2" fill="#F5DF7A" opacity=".6"/>
+            <rect x="152" y="58" width="22" height="16" rx="2" fill="#D4EDDA"/>
+            <rect x="176" y="58" width="22" height="16" rx="2" fill="#F5DF7A" opacity=".4"/>
+            <rect x="8"   y="76" width="22" height="16" rx="2" fill="#F5DF7A" opacity=".4"/>
+            <rect x="32"  y="76" width="22" height="16" rx="2" fill="#D4EDDA"/>
+            <rect x="56"  y="76" width="22" height="16" rx="2" fill="#F5DF7A" opacity=".7"/>
+            <rect x="80"  y="76" width="22" height="16" rx="2" fill="#F0AEBE" opacity=".5"/>
+            <rect x="104" y="76" width="22" height="16" rx="2" fill="#F5DF7A" opacity=".9"/>
+            <rect x="128" y="76" width="22" height="16" rx="2" fill="#D4EDDA"/>
+            <rect x="152" y="76" width="22" height="16" rx="2" fill="#F5DF7A" opacity=".5"/>
+            <rect x="176" y="76" width="22" height="16" rx="2" fill="#D4EDDA"/>
+            <!-- Legend -->
+            <rect x="8"   y="100" width="12" height="8" rx="2" fill="#D4EDDA"/>
+            <text x="23"  y="108" font-family="'DM Mono',monospace" font-size="6.5" fill="#908D86">Low</text>
+            <rect x="46"  y="100" width="12" height="8" rx="2" fill="#F5DF7A" opacity=".85"/>
+            <text x="61"  y="108" font-family="'DM Mono',monospace" font-size="6.5" fill="#908D86">Medium</text>
+            <rect x="98"  y="100" width="12" height="8" rx="2" fill="#F0AEBE"/>
+            <text x="113" y="108" font-family="'DM Mono',monospace" font-size="6.5" fill="#908D86">High</text>
+            <rect x="138" y="100" width="12" height="8" rx="2" fill="#E8908A"/>
+            <text x="153" y="108" font-family="'DM Mono',monospace" font-size="6.5" fill="#908D86">Critical</text>
+            <line x1="8" y1="115" x2="292" y2="115" stroke="#EEECE8" stroke-width="1"/>
+            <text x="8" y="128" font-family="'DM Mono',monospace" font-size="7" fill="#908D86" letter-spacing=".06em">INCIDENCE TREND · 12 MONTHS</text>
+            <line x1="8" y1="158" x2="292" y2="158" stroke="#EEECE8" stroke-width=".5"/>
+            <path d="M8,153 L28,151 L52,145 L76,148 L100,141 L124,133 L148,127 L172,135 L196,131 L220,123 L244,118 L268,113 L292,111 L292,158 L8,158 Z" fill="#F0AEBE" opacity=".12"/>
+            <polyline points="8,153 28,151 52,145 76,148 100,141 124,133 148,127 172,135 196,131 220,123 244,118 268,113 292,111" fill="none" stroke="#F0AEBE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="8"   y="164" font-family="'DM Mono',monospace" font-size="5.5" fill="#908D86">Jan</text>
+            <text x="100" y="164" font-family="'DM Mono',monospace" font-size="5.5" fill="#908D86">Apr</text>
+            <text x="196" y="164" font-family="'DM Mono',monospace" font-size="5.5" fill="#908D86">Jul</text>
+            <text x="283" y="164" font-family="'DM Mono',monospace" font-size="5.5" fill="#908D86">Dec</text>
+          </svg>
+        </div>
+        <div class="proj-body">
+          <div class="proj-tag-row">
+            <span class="proj-tag hi">Power BI</span>
+            <span class="proj-tag">Geospatial</span>
+            <span class="proj-tag ye">FMCG · Fyffes</span>
+          </div>
+          <h2 class="proj-title">Pineapple Pest Control Optimisation — Fyffes</h2>
+          <p class="proj-desc">Built Power BI dashboards to detect pest-risk zones in pineapple plantations, combining climate and yield data to recommend targeted interventions and reduce reactive pesticide use.</p>
+          <div class="proj-metrics">
+            <div>
+              <div class="pm-val">32<span> zones</span></div>
+              <div class="pm-label">Risk-mapped plantation areas</div>
+            </div>
+          </div>
+          <a class="proj-link" href="https://github.com/gambhirp/Fyffes" target="_blank" rel="noopener">
+            View on GitHub <svg viewBox="0 0 12 12"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <!-- Replace href with your actual portfolio URL once hosted -->
+    <a class="ft-logo" href="#" target="_blank">Prachi <span>Gambhir</span></a>
+    <div class="ft-copy">© 2025 · Dublin, Ireland</div>
+    <div class="ft-links">
+      <a href="https://www.linkedin.com/in/prachi-gambhir" target="_blank">LinkedIn</a>
+      <a href="https://github.com/gambhirp" target="_blank">GitHub</a>
+      <a href="mailto:prachi.gambhir03@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function raf(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(raf)})();
+document.querySelectorAll('a,button,.proj-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('h'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('h'));
+});
+const lw=document.getElementById('loader-word');
+'PROJECTS'.split('').forEach((ch,i)=>{
+  const s=document.createElement('span');
+  s.className='lc'+(i>=4?' p':'');
+  s.style.animationDelay=(i*.08+.1)+'s';
+  s.textContent=ch;
+  lw.appendChild(s);
+});
+setTimeout(()=>{
+  const l=document.getElementById('loader');
+  l.classList.add('out');
+  setTimeout(()=>l.remove(),800);
+},2000);
+const hc=document.getElementById('hero-canvas');
+const hx=hc.getContext('2d');
+function resizeH(){hc.width=window.innerWidth;hc.height=hc.parentElement.offsetHeight}
+resizeH();window.addEventListener('resize',resizeH);
+const pts=Array.from({length:35},()=>({x:Math.random(),y:Math.random(),vx:(Math.random()-.5)*.00025,vy:-(Math.random()*.00018+.00008),a:Math.random()*.3+.05,r:Math.random()*1.4+.5,c:Math.random()>.5?'#F0AEBE':'#F5DF7A'}));
+(function drawHero(){
+  hx.clearRect(0,0,hc.width,hc.height);
+  const W=hc.width,H=hc.height;
+  hx.strokeStyle='rgba(0,0,0,0.04)';hx.lineWidth=.5;
+  for(let c=0;c<=12;c++){hx.beginPath();hx.moveTo(c*(W/12),0);hx.lineTo(c*(W/12),H);hx.stroke()}
+  for(let r=0;r<=8;r++){hx.beginPath();hx.moveTo(0,r*(H/8));hx.lineTo(W,r*(H/8));hx.stroke()}
+  pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.y<-.04){p.y=1.04;p.x=Math.random()}if(p.x<0||p.x>1)p.vx*=-1;hx.beginPath();hx.arc(p.x*W,p.y*H,p.r,0,Math.PI*2);hx.fillStyle=p.c;hx.globalAlpha=p.a;hx.fill();hx.globalAlpha=1});
+  requestAnimationFrame(drawHero);
+})();
+const mItems=['ESG Score Prediction · S&P 500','CRM Automation · NLP · Whisper ASR','Bank Churn · XGBoost · AUC 0.91','Hotel Reviews · 500k Reviews · Sentiment NLP','Fyffes · Power BI · Pest Risk Zones','Python · SQL · Scikit-learn · Tableau','MSc Business Analytics · Trinity College Dublin'];
+const track=document.getElementById('mq-track');
+[...mItems,...mItems].forEach(t=>{const d=document.createElement('div');d.className='mq-item';d.textContent=t;track.appendChild(d)});
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('s',scrollY>80));
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');io.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.r').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
